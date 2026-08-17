@@ -147,7 +147,7 @@ button:hover {
     color: black;
 }
 
-/* CREATEUR */
+/* DEV CIFER — PAGE 1 + PAGE 2 */
 
 .creator {
     position: absolute;
@@ -156,17 +156,25 @@ button:hover {
 
     transform: translateX(-50%);
 
-    color: rgba(255,255,255,.65);
+    color: rgba(255,255,255,.75);
 
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 5px;
 
     white-space: nowrap;
+
+    z-index: 10;
+
+    text-shadow: 0 0 12px #000;
 }
 
 .creator span {
     color: white;
     font-weight: bold;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.5),
+        0 0 20px rgba(255,255,255,.25);
 }
 
 /* ANIMATION */
@@ -202,13 +210,19 @@ button:hover {
     button {
         padding: 14px 35px;
     }
+
+    .creator {
+        bottom: 18px;
+        font-size: 12px;
+        letter-spacing: 4px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
+<!-- ==================== PAGE 1 ==================== -->
 
 <section id="page1" class="page">
 
@@ -224,6 +238,7 @@ button:hover {
 
     </div>
 
+    <!-- DEV CIFER PAGE 1 -->
     <div class="creator">
         𝑫𝒆𝒗 <span>𝑪𝒊𝒇𝒆𝒓</span>
     </div>
@@ -231,7 +246,7 @@ button:hover {
 </section>
 
 
-<!-- PAGE 2 -->
+<!-- ==================== PAGE 2 ==================== -->
 
 <section id="page2" class="page">
 
@@ -256,6 +271,7 @@ button:hover {
 
     </div>
 
+    <!-- DEV CIFER PAGE 2 -->
     <div class="creator">
         𝑫𝒆𝒗 <span>𝑪𝒊𝒇𝒆𝒓</span>
     </div>
@@ -263,7 +279,7 @@ button:hover {
 </section>
 
 
-<!-- MUSIQUE -->
+<!-- ==================== MUSIQUE ==================== -->
 
 <audio id="audio" loop preload="auto">
     <source src="anxiety.mp4" type="audio/mp4">
@@ -310,7 +326,11 @@ function jouer() {
         .catch((error) => {
 
             console.log("Erreur audio :", error);
-            alert("Impossible de lire anxiety.mp4. Vérifie que le fichier est bien dans le même dossier que index.html.");
+
+            alert(
+                "Impossible de lire anxiety.mp4.\n\n" +
+                "Vérifie que anxiety.mp4 est dans le même dossier que index.html."
+            );
 
         });
 
