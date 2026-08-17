@@ -20,10 +20,6 @@ body {
     overflow: hidden;
 }
 
-/* =========================
-   PAGES
-========================= */
-
 .page {
     position: fixed;
     inset: 0;
@@ -37,10 +33,6 @@ body {
     text-align: center;
     transition: 1s ease;
 }
-
-/* =========================
-   IMAGE + FOND
-========================= */
 
 .page::before {
     content: "";
@@ -72,9 +64,7 @@ body {
     z-index: -1;
 }
 
-/* =========================
-   PAGE 1
-========================= */
+/* PAGE 1 */
 
 #page1 {
     opacity: 1;
@@ -122,9 +112,7 @@ button:hover {
         0 0 20px rgba(255,255,255,.5);
 }
 
-/* =========================
-   PAGE 2
-========================= */
+/* PAGE 2 */
 
 #page2 {
     display: none;
@@ -159,9 +147,7 @@ button:hover {
     color: black;
 }
 
-/* =========================
-   CREATEUR
-========================= */
+/* CREATEUR */
 
 .creator {
     position: absolute;
@@ -183,12 +169,9 @@ button:hover {
     font-weight: bold;
 }
 
-/* =========================
-   ANIMATION
-========================= */
+/* ANIMATION */
 
 @keyframes apparition {
-
     from {
         opacity: 0;
         transform: translateY(25px);
@@ -198,14 +181,14 @@ button:hover {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 .fadeOut {
     opacity: 0 !important;
 }
 
-/* Mobile */
+/* MOBILE */
+
 @media (max-width: 600px) {
 
     .quote {
@@ -225,9 +208,7 @@ button:hover {
 
 <body>
 
-<!-- =========================
-     PAGE 1
-========================= -->
+<!-- PAGE 1 -->
 
 <section id="page1" class="page">
 
@@ -250,9 +231,7 @@ button:hover {
 </section>
 
 
-<!-- =========================
-     PAGE 2
-========================= -->
+<!-- PAGE 2 -->
 
 <section id="page2" class="page">
 
@@ -284,12 +263,10 @@ button:hover {
 </section>
 
 
-<!-- =========================
-     AUDIO
-========================= -->
+<!-- MUSIQUE -->
 
-<audio id="audio" loop>
-    <source src="anxiety.mp3" type="audio/mpeg">
+<audio id="audio" loop preload="auto">
+    <source src="anxiety.mp4" type="audio/mp4">
 </audio>
 
 
@@ -323,10 +300,19 @@ function jouer() {
 
     if (audio.paused) {
 
-        audio.play();
+        audio.play()
+        .then(() => {
 
-        button.innerHTML = "⏸ PAUSE";
-        button.classList.add("playing");
+            button.innerHTML = "⏸ PAUSE";
+            button.classList.add("playing");
+
+        })
+        .catch((error) => {
+
+            console.log("Erreur audio :", error);
+            alert("Impossible de lire anxiety.mp4. Vérifie que le fichier est bien dans le même dossier que index.html.");
+
+        });
 
     } else {
 
